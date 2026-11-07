@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Examples</title>
+</head>
+<body>
+    <h2>JavaScript Function Demonstration</h2>
+    <div id="result"></div>
+
+    <script>
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+       
+        const cube = function(n) {
+            return n * n * n;
+        };
+
+        const welcome = (name) => "Welcome, " + name + "!";
+
+        let output = "";
+
+        output += "multiply(4, 5) = " +
+                  multiply(4, 5) + "<br>";
+
+        output += "cube(3) = " +
+                  cube(3) + "<br>";
+
+        output += welcome("Karthik");
+
+        document.getElementById("result").innerHTML =
+            output;
+    </script>
+</body>
+</html>
