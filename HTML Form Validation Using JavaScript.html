@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form Validation</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+
+        input {
+            display: block;
+            margin: 8px 0;
+            padding: 7px;
+            width: 230px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+
+    <form name="studentForm"
+          onsubmit="return checkForm()">
+
+        <input type="text" name="student"
+               placeholder="Enter Student Name">
+
+        <input type="email" name="mail"
+               placeholder="Enter Email Address">
+
+        <input type="password" name="password"
+               placeholder="Create Password">
+
+        <input type="password" name="confirm"
+               placeholder="Re-enter Password">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="message" class="error"></p>
+
+    <script>
+        function checkForm() {
+            let form = document.forms["studentForm"];
+
+            let student = form["student"].value.trim();
+            let mail = form["mail"].value.trim();
+            let password = form["password"].value;
+            let confirm = form["confirm"].value;
+
+            let error = "";
+
+            if (student === "") {
+                error = "Please enter your name.";
+            } else if (mail === "") {
+                error = "Email address is required.";
+            } else if (
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)
+            ) {
+                error = "Enter a valid email address.";
+            } else if (password.length < 8) {
+                error = "Password must contain at least 8 characters.";
+            } else if (password !== confirm) {
+                error = "Both passwords must match.";
+            }
+
+            if (error !== "") {
+                document.getElementById("message").innerHTML =
+                    error;
+                return false;
+            }
+
+            document.getElementById("message").style.color =
+                "green";
+
+            document.getElementById("message").innerHTML =
+                "Registration completed successfully!";
+
+            alert("Form validated successfully!");
+
+            return false;
+        }
+    </script>
+</body>
+</html>
